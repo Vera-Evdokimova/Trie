@@ -1,6 +1,10 @@
-import java.util.*;
+package spbstu;
 
-public class pref {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
+public class Trie {
     static class TrieNode {
         Map<Character, TrieNode> children = new TreeMap<>();
         boolean leaf;
