@@ -22,6 +22,27 @@ public class Trie {
         }
         v.leaf = true;
     }
+
+    private Map<Integer, String> levelSpacesMap = new HashMap<>();
+
+    public void remove(String s) {
+        TrieNode v = root;
+        TrieNode rem = root;
+        char del = 'a';
+        for (char ch : s.toLowerCase().toCharArray()) {
+            if (v.children.containsKey(ch)) {
+                if (!v.leaf && v.children.size() != 1) {
+                    rem = v;
+                    del = ch;
+                    v = v.children.get(ch);
+                } else {
+                    v = v.children.get(ch);
+                }
+            }
+        }
+        rem.children.remove(del);
+    }
+
     public boolean find(String s) {
         TrieNode v = root;
         for (char ch : s.toLowerCase().toCharArray()) {
@@ -33,8 +54,6 @@ public class Trie {
         }
         return true;
     }
-
-    private Map<Integer,String> levelSpacesMap = new HashMap<>();
 
     private String getSpace(int level) {
         String result = levelSpacesMap.get(level);
@@ -70,3 +89,4 @@ public class Trie {
         return res.toString();
     }
 }
+

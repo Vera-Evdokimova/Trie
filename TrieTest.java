@@ -26,4 +26,21 @@ public class TrieTest {
         assertTrue(trie.find("test"));
         assertFalse(trie.find("tee"));
     }
+
+    @Test
+    public void remove() {
+        trie = new Trie();
+        trie.put("tee");
+        trie.put("test");
+        trie.put("team");
+        trie.put("time");
+        trie.put("tess");
+        trie.put("teb");
+        trie.remove("test");
+        assertEquals(trie.printSorted(), "-t-e-a-m\n" +
+                " \\b\n" +
+                " \\e\n" +
+                " \\s-s\n" +
+                " \\i-m-e\n");
+    }
 }
